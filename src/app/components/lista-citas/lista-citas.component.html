@@ -1,0 +1,9 @@
+<ion-text *ngIf="citas.length === 0" color="medium">
+  <p class="vacio">No hay citas guardadas. ¡Agrega la primera!</p>
+</ion-text>
+
+<ion-list *ngIf="citas.length > 0" lines="full">
+  <ion-item *ngFor="let cita of citas">
+    <app-cita [cita]="cita" [permitirBorrar]="true" (borrarCita)="onBorrarCita($event)"></app-cita>
+  </ion-item>
+</ion-list>

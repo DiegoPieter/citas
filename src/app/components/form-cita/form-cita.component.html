@@ -1,0 +1,48 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Crea una nueva cita</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <form [formGroup]="formulario" (ngSubmit)="onAgregar()">
+      <ion-list>
+        <ion-item>
+          <ion-input
+            label="Cita"
+            formControlName="frase"
+            placeholder="Escribe la frase"
+          ></ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="mostrarError('frase')">
+          <p class="error" *ngIf="tieneError('frase', 'required')">La cita es obligatoria.</p>
+          <p class="error" *ngIf="tieneError('frase', 'minlength')">
+            La cita debe tener al menos 5 caracteres.
+          </p>
+        </ion-text>
+
+        <ion-item>
+          <ion-input
+            label="Autor"
+            formControlName="autor"
+            placeholder="Mahatma Gandhi"
+          ></ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="mostrarError('autor')">
+          <p class="error" *ngIf="tieneError('autor', 'required')">El autor es obligatorio.</p>
+          <p class="error" *ngIf="tieneError('autor', 'minlength')">
+            El autor debe tener al menos 2 caracteres.
+          </p>
+        </ion-text>
+      </ion-list>
+
+      <ion-text color="danger" *ngIf="intentoEnviar && formulario.invalid">
+        <p class="error">Revisa los campos marcados antes de agregar la cita.</p>
+      </ion-text>
+
+      <ion-button type="submit" fill="clear">
+        Agregar
+        <ion-icon slot="end" name="add"></ion-icon>
+      </ion-button>
+    </form>
+  </ion-card-content>
+</ion-card>

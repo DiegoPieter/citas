@@ -1,0 +1,11 @@
+.centro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100%;
+}
+
+.vacio {
+  text-align: center;
+  padding: 16px;
+}

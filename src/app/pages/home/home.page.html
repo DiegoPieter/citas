@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Citas</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/configuracion" aria-label="Configuración">
+        <ion-icon slot="icon-only" name="settings-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="centro">
+    <app-cita
+      *ngIf="citaAleatoria() as cita"
+      [cita]="cita"
+      [destacada]="true"
+      [permitirBorrar]="permitirBorrar()"
+      (borrarCita)="onBorrarCita($event)"
+    ></app-cita>
+
+    <ion-text *ngIf="!citaAleatoria()" color="medium">
+      <p class="vacio">No hay citas guardadas. Agrega una con el botón +</p>
+    </ion-text>
+  </div>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button routerLink="/gestion-citas" aria-label="Gestionar citas">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

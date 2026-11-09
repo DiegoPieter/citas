@@ -1,0 +1,10 @@
+<div class="cita" [class.destacada]="destacada">
+  <div class="contenido">
+    <p class="frase">{{ cita.frase }}</p>
+    <p class="autor">{{ cita.autor }}</p>
+  </div>
+
+  <ion-button *ngIf="permitirBorrar" fill="clear" (click)="onBorrar()" aria-label="Eliminar cita">
+    <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+  </ion-button>
+</div>
